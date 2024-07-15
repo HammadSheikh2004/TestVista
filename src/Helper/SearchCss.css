@@ -1,0 +1,28 @@
+.search-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search {
+    width: 80%;
+    padding: 20px;
+    padding-right: 100px; 
+    margin: 10px 0;
+    border: 2px solid black;
+    border-radius: 50px;
+    font-size: 20px;
+}
+
+.search:focus {
+    border-color: #D410AA;
+}
+
+.search-button {
+    position: absolute;
+    right: 150px; 
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50px;
+}

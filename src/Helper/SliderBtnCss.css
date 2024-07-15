@@ -1,0 +1,21 @@
+.sliderBtn{
+    width: 100%;
+}
+
+.hand-cursor {
+    cursor: grab;
+}
+
+.hand-cursor:active {
+    cursor: grabbing;
+}
+
+.btn2{
+    font-size: 20px;
+    border: none !important;
+}
+
+.btn{
+    border: 2px solid white !important;
+    font-size: 20px;
+}
