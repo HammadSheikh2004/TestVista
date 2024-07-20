@@ -11,12 +11,36 @@ const HomeBanner2 = () => {
     const { theme } = useContext(Context);
     return (
         <>
-            <Box sx={{ backgroundColor: theme.blackColor, height: 'auto', padding: '40px 50px' }}>
+            <Box sx={{
+                backgroundColor: theme.blackColor, height: 'auto',
+                padding: {
+                    xs: '20px 10px', // padding for extra-small screens
+                    sm: '30px 20px', // padding for small screens
+                    md: '40px 30px', // padding for medium screens
+                    lg: '50px 40px'  // padding for large screens
+                }
+            }}>
                 <Container sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', }}>
                     <div style={{ marginTop: '90px' }}>
-                        <Typography sx={{ fontSize: '60px', margin: '0 auto', textAlign: 'center', maxWidth: '1000px', lineHeight: '48px', fontWeight: 'bold', color: theme.whiteColor }}>
+                        <Typography
+                            sx={{
+                                fontSize: {
+                                    xs: '40px', // font size for extra-small screens
+                                    sm: '40px', // font size for small screens
+                                    md: '50px', // font size for medium screens
+                                    lg: '60px' // font size for large screens
+                                },
+                                margin: '0 auto',
+                                textAlign: 'center',
+                                maxWidth: '1000px',
+                                lineHeight: '48px',
+                                fontWeight: 'bold',
+                                color: theme.whiteColor
+                            }}
+                        >
                             JOIN 10,000+ COMPANIES WHO HIRE WITH TESTGORILLA
                         </Typography>
+
                         <Box
                             sx={{
                                 marginTop: '70px',
@@ -39,7 +63,7 @@ const HomeBanner2 = () => {
                                         item
                                         key={index}
                                         xs={6}
-                                        sm={1.6}
+                                        sm={3}
                                         lg={2.4}
                                         sx={{
                                             display: 'flex',

@@ -1,10 +1,12 @@
-import React, { createContext } from 'react'
+import React, { createContext } from 'react';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import Navbar from '../Routing/Navbar';
 import Routing from '../Routing/Routing';
 import FooterComp from '../ReuseableComp/FooterComp';
-export const Context = createContext();
-const ContextApi = () => {
 
+export const Context = createContext();
+
+const ContextApi = () => {
     const theme = {
         primaryColor: '#D410AA',
         secondaryColor: '#FFE6FA',
@@ -13,16 +15,26 @@ const ContextApi = () => {
         whiteColor: 'white',
         blackColor: '#242424',
         grayColor: '#D3D3D3',
-    }
+    };
+
+    return (
+        <Context.Provider value={{ theme }}>
+            <MainContent />
+        </Context.Provider>
+    );
+};
+
+const MainContent = () => {
+    const location = useLocation();
+    const showHeaderFooter = location.pathname.trim() !== '/signup' && location.pathname.trim() !== '/signin';
+
     return (
         <>
-            <Context.Provider value={{ theme }}>
-                <Navbar />
-                <Routing />
-                <FooterComp />
-            </Context.Provider>
+            {showHeaderFooter && <Navbar />}
+            <Routing />
+            {showHeaderFooter && <FooterComp />}
         </>
-    )
-}
+    );
+};
 
-export default ContextApi
+export default ContextApi;

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Context } from '../ContextApi/Context';
 
-const ButtonComp = ({ button, classes }) => {
+const ButtonComp = ({ button, classes, click }) => {
     const { theme } = useContext(Context);
     const [isHovered, setIsHovered] = useState(false);
 
@@ -19,6 +19,7 @@ const ButtonComp = ({ button, classes }) => {
         <button
             className={classes}
             style={buttonStyles}
+            onClick={click}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >

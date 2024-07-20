@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { AppBar, Box, Container, Drawer, Grid, IconButton, List, ListItem, Toolbar, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Context } from '../ContextApi/Context';
 import ArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import SubNavOne from '../ReuseableComp/SubNavOne';
@@ -66,7 +66,7 @@ const Navbar = () => {
                             <SubNavOne />
                         </Grid>
                     </Box>
-                    
+
                 )}
             </Box>
             <NavLink
@@ -138,20 +138,34 @@ const Navbar = () => {
         </Box>
     );
 
+    const navigate = useNavigate();
+
+    const goSignUp = () => {
+        navigate("/signup");
+    }
+
+    const goSignIn = () => {
+        navigate("/signin");
+    }
+
     return (
         <Box>
-            <AppBar sx={{ backgroundColor: theme.whiteColor }} position='relative'>
+            <AppBar sx={{ backgroundColor: theme.whiteColor }} position='fixed' width='100%'>
                 <Container>
                     <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <Typography variant="h6" sx={{ color: theme.blackColor, '&:hover': { color: theme.orangeColor, cursor: 'pointer' } }} component="div">
+                        <Typography
+                            variant="h6"
+                            sx={{ color: theme.blackColor, '&:hover': { color: theme.orangeColor, cursor: 'pointer' } }}
+                            component="div"
+                        >
                             TestVista
                         </Typography>
                         <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 2, alignItems: 'center' }}>
                             {navLinks}
                         </Box>
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                            <ButtonComp2 buttonTwo="Book a demo" />
-                            <ButtonComp button="Try for free!" />
+                        <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: '10px' }}>
+                            <ButtonComp2 buttonTwo="Sign Up" click={goSignUp} />
+                            <ButtonComp button="Sign In"click={goSignIn} />
                         </Box>
                         <IconButton
                             color="inherit"
@@ -160,11 +174,32 @@ const Navbar = () => {
                             sx={{ display: { xs: 'block', md: 'none' } }}
                             onClick={toggleDrawer(true)}
                         >
-                            <MenuIcon />
+                            <MenuIcon sx={{ color: theme.blackColor }} />
                         </IconButton>
                     </Toolbar>
                 </Container>
+                <Box
+                    sx={{
+                        display: { xs: 'flex', md: 'none' },
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        position: 'fixed',
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        backgroundColor: theme.whiteColor,
+                        padding: "10px 0",
+                        p: 2,
+                        boxShadow: '0 -2px 5px rgba(0,0,0,0.1)',
+                        zIndex: 1000,
+                        gap: '10px'
+                    }}
+                >
+                    <ButtonComp2 buttonTwo="Sign Up" click={goSignUp} />
+                    <ButtonComp button="Sign In" click={goSignIn}/>
+                </Box>
             </AppBar>
+
 
 
 

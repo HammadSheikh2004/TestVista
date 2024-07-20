@@ -13,7 +13,13 @@ const Home = () => {
     <>
       <Box sx={{ backgroundColor: theme.lightColor, height: 'auto' }}>
         <Container sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', }}>
-          <div style={{ marginTop: '170px' }}>
+          <Box component='div' sx={{
+            marginTop: {
+              xs: '70px',
+              sm: '120px',
+              lg: '150px'
+            },
+          }}>
             <Typography sx={{ fontSize: '60px', margin: '0 auto', textAlign: 'center', maxWidth: '600px', lineHeight: '48px', fontWeight: 'bold' }}>
               SKILLS TESTS TO HIRE THE BEST
             </Typography>
@@ -22,7 +28,7 @@ const Home = () => {
             </Typography>
             <SearchComp />
             <img src={HomeBanner} width="100%" height="100%" style={{ marginBottom: '30px' }} alt="" />
-          </div>
+          </Box>
         </Container>
       </Box>
       <HomeBanner2 />

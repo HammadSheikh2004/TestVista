@@ -30,7 +30,7 @@ const FooterComp = () => {
     }
 
     return (
-        <Box sx={{ backgroundColor: theme.whiteColor, height: 'auto', marginTop: '30px' }}>
+        <Box sx={{ backgroundColor: theme.whiteColor, height: 'auto', marginTop: '30px', marginBottom: { sm: '80px', xs: '80px', lg:'0px' } }}>
             <Container>
                 <Grid container item spacing={2} xs={12}>
                     <Grid item lg={6} xs={12} sm={6}>
@@ -63,8 +63,14 @@ const FooterComp = () => {
 
                 <hr style={{ margin: "30px 0px", borderColor: theme.grayColor }} />
 
-                <Typography sx={{ display: 'flex', alignItems: 'center', justifyContent:'center', margin:'30px 0px' }}>
-                    &copy; TestVista {currentYear}. All right reversed.
+                <Typography sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    margin: '30px 0px',
+                    fontSize: { xs: '13px', md: '20px' }
+                }}>
+                    &copy; <Box component='span' sx={{ fontSize: { xs: '25px', md: '30px' }, color: theme.primaryColor, margin: '0px 8px', fontWeight: 'bold' }}>TestVista</Box> {currentYear}. All right reversed.
                 </Typography>
             </Container>
         </Box>
