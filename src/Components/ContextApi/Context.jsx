@@ -26,7 +26,7 @@ const ContextApi = () => {
 
 const MainContent = () => {
     const location = useLocation();
-    const showHeaderFooter = location.pathname.trim() !== '/signup' && location.pathname.trim() !== '/signin';
+    const showHeaderFooter = location.pathname.trim() !== '/signup' && location.pathname.trim() !== '/signin' && location.pathname.trim() !== '/dashboard';
 
     return (
         <>

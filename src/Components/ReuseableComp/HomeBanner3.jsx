@@ -51,7 +51,7 @@ const HomeBanner3 = () => {
                         <Box>
                             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                                 <Grid item xs={12} md={6}>
-                                    <ButtonGroup orientation="vertical">
+                                    <ButtonGroup orientation="vertical" sx={{width:'100%'}}>
                                         {[
                                             "Predict job success, with 400+ test",
                                             "Handle thousand of application with ease, with ranked shortlist in minutes",

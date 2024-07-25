@@ -10,12 +10,13 @@ import ButtonComp from '../ReuseableComp/ButtonComp';
 import ButtonComp2 from '../ReuseableComp/ButtonComp2';
 
 const Navbar = () => {
-    const [drawerOpen, setDrawerOpen] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
+
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [resourcesOpen, setResourcesOpen] = useState(false);
 
-    const toggleDrawer = (open) => () => {
-        setDrawerOpen(open);
+    const toggleMenu = (open) => () => {
+        setMenuOpen(open);
     };
 
     const { theme } = useContext(Context);
@@ -165,14 +166,14 @@ const Navbar = () => {
                         </Box>
                         <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: '10px' }}>
                             <ButtonComp2 buttonTwo="Sign Up" click={goSignUp} />
-                            <ButtonComp button="Sign In"click={goSignIn} />
+                            <ButtonComp button="Sign In" click={goSignIn} />
                         </Box>
                         <IconButton
                             color="inherit"
-                            aria-label="open drawer"
+                            aria-label="open menu"
                             edge="end"
                             sx={{ display: { xs: 'block', md: 'none' } }}
-                            onClick={toggleDrawer(true)}
+                            onClick={toggleMenu(!menuOpen)}
                         >
                             <MenuIcon sx={{ color: theme.blackColor }} />
                         </IconButton>
@@ -196,34 +197,40 @@ const Navbar = () => {
                     }}
                 >
                     <ButtonComp2 buttonTwo="Sign Up" click={goSignUp} />
-                    <ButtonComp button="Sign In" click={goSignIn}/>
+                    <ButtonComp button="Sign In" click={goSignIn} />
                 </Box>
             </AppBar>
 
 
 
 
-            <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
-                <Box
-                    sx={{ width: 250 }}
-                    role="presentation"
-                    onClick={toggleDrawer(false)}
-                    onKeyDown={toggleDrawer(false)}
-                >
-                    <List>
-                        {['Home', 'About', 'Products', 'Contact'].map((text) => (
-                            <ListItem button key={text}>
-                                <NavLink
-                                    to={`/${text.toLowerCase()}`}
-                                    style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}
-                                >
-                                    {text}
-                                </NavLink>
-                            </ListItem>
-                        ))}
-                    </List>
-                </Box>
-            </Drawer>
+            {
+                menuOpen && (
+                    <Box
+                        sx={{ width: '100%', boxShadow: '0 -2px 5px rgba(0,0,0,0.1)', zIndex: 1000, backgroundColor: theme.whiteColor, position: 'fixed', marginTop: '50px', height: '300px' }}
+                        onClick={toggleMenu(false)}
+                        onKeyDown={toggleMenu(false)}
+                    >
+                        <Container>
+                            <List>
+                                {['Home', 'About', 'Products', 'Contact'].map((text) => (
+                                    <ListItem button key={text}>
+                                        <NavLink
+                                            to={`/${text.toLowerCase()}`}
+                                            style={{ textDecoration: 'none', color: theme.blackColor, width: '100%', margin: '10px 0px', borderBottom: '1px solid', borderColor: theme.blackColor, padding:'10px 0px' }}
+                                        >
+                                            {text}
+                                        </NavLink>
+                                    </ListItem>
+                                ))}
+                            </List>
+                        </Container>
+
+                    </Box>
+                )
+            }
+
+
         </Box>
     );
 };
